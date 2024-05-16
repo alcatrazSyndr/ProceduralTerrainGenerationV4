@@ -28,10 +28,13 @@ public class WorldChunkController : MonoBehaviour
     [SerializeField] private int _octaves = 1;
     [SerializeField] private float _persistence = 1f;
     [SerializeField] private float _lacunarity = 1f;
+    [SerializeField] private AnimationCurve _heightMapCurve;
     [SerializeField] private bool _falloff = false;
     [SerializeField] private bool _invertFalloff = false;
     [SerializeField] private float _falloffMainlandSize = 1f;
     [SerializeField] private float _falloffTransitionWidth = 1f;
+    [SerializeField] private bool _hydraulicErosion = false;
+    [SerializeField] private int _hydraulicErosionIterations = 1000;
     [SerializeField] private Material _worldChunkMaterial;
 
     [Header("Runtime")]
@@ -52,12 +55,19 @@ public class WorldChunkController : MonoBehaviour
             _worldScale, 
             _heightMultiplier, 
             _octaves, 
-            _persistence, 
-            _lacunarity, 
+            _persistence,
+            _lacunarity,
+            _heightMapCurve,
             _falloff, 
             _invertFalloff, 
             _falloffMainlandSize, 
             _falloffTransitionWidth);
+
+        if (_hydraulicErosion)
+        {
+            worldHeightMap = HydraulicErosion.HydraulicErosionSimulation(worldHeightMap, _worldSize * _chunkSize, _hydraulicErosionIterations);
+        }
+
         var worldHeightMapDictionary = GenerateChunkDictionaryFromWorldHeightMap(worldHeightMap);
 
         for (int x = 0; x < _worldSize; x++)
@@ -66,7 +76,7 @@ public class WorldChunkController : MonoBehaviour
             {
                 var worldCoordinate = new Vector2Int(x, y);
                 var worldChunkHeightMap = worldHeightMapDictionary[worldCoordinate];
-                var worldChunk = new WorldChunk(worldCoordinate, worldChunkHeightMap, _chunkSize, _worldChunkMaterial);
+                var worldChunk = new WorldChunk(worldCoordinate, worldChunkHeightMap, _chunkSize, _worldChunkMaterial, _heightMultiplier);
 
                 worldChunk.ChunkGO.transform.SetParent(transform);
 

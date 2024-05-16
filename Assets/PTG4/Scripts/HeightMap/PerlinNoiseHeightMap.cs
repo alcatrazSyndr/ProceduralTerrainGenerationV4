@@ -12,6 +12,7 @@ public static class PerlinNoiseHeightMap
         int octaves,
         float persistence,
         float lacunarity,
+        AnimationCurve heightMapCurve,
         bool falloff,
         bool invertFalloff,
         float falloffMainlandSize,
@@ -47,10 +48,10 @@ public static class PerlinNoiseHeightMap
                 {
                     var falloffValue = Falloff.EvaluateWorldFalloffMap(x, y, totalWorldSize, falloffMainlandSize, falloffTransitionWidth);
 
-                    noiseHeight += invertFalloff ? falloffValue : -falloffValue;
+                    noiseHeight -= falloffValue;
                 }
 
-                heightMap[x, y] = (noiseHeight * heightMultiplier);
+                heightMap[x, y] = Mathf.Clamp01(heightMapCurve.Evaluate(noiseHeight));
             }
         }
 

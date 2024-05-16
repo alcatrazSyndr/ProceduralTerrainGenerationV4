@@ -261,19 +261,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8febfb6e97c56e468d90f4f964c07d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _worldSize: 3
+  _worldSize: 6
   _chunkSize: 240
   _worldScale: 4
-  _heightMultiplier: 50
-  _octaves: 8
-  _persistence: 0.7
-  _lacunarity: 1
+  _heightMultiplier: 130
+  _octaves: 3
+  _persistence: 0.2
+  _lacunarity: 4
+  _heightMapCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.7477952
+      value: 0.22642197
+      inSlope: 1.038199
+      outSlope: 1.038199
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 3.088533
+      outSlope: 3.088533
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33185244
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   _falloff: 0
   _invertFalloff: 0
   _falloffMainlandSize: 0.9
-  _falloffTransitionWidth: 1
+  _falloffTransitionWidth: 15
+  _hydraulicErosion: 1
+  _hydraulicErosionIterations: 1440000
   _worldChunkMaterial: {fileID: 2100000, guid: c5293e1d0a757e045a800c88aa255110, type: 2}
-  _worldChunkGameObjectList: []
+  _worldChunkGameObjectList:
+  - {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,12 +11,12 @@ public class WorldChunk
     public MeshRenderer ChunkMeshRenderer;
     public MeshCollider ChunkMeshCollider;
 
-    public WorldChunk(Vector2Int worldCoordinate, float[,] heightMap, int chunkSize, Material chunkMat)
+    public WorldChunk(Vector2Int worldCoordinate, float[,] heightMap, int chunkSize, Material chunkMat, float heightMultiplier)
     {
         ChunkGO = new GameObject("WorldChunk_" + worldCoordinate.ToString());
 
         ChunkMeshFilter = ChunkGO.AddComponent<MeshFilter>();
-        var mesh = WorldChunkMeshGenerator.GenerateWorldChunkMesh(heightMap);
+        var mesh = WorldChunkMeshGenerator.GenerateWorldChunkMesh(heightMap, heightMultiplier);
         ChunkMeshFilter.mesh = mesh;
 
         ChunkMeshRenderer = ChunkGO.AddComponent<MeshRenderer>();

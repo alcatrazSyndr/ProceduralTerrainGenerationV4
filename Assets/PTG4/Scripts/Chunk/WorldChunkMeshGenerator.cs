@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class WorldChunkMeshGenerator
 {
-    public static Mesh GenerateWorldChunkMesh(float[,] heightMap)
+    public static Mesh GenerateWorldChunkMesh(float[,] heightMap, float heightMultiplier)
     {
         var width = heightMap.GetLength(0);
         var height = heightMap.GetLength(1);
@@ -16,7 +16,7 @@ public static class WorldChunkMeshGenerator
         {
             for (int x = 0; x < width; x++)
             {
-                meshData.Vertices[vertexIndex] = new Vector3(x, heightMap[x, y], y);
+                meshData.Vertices[vertexIndex] = new Vector3(x, heightMap[x, y] * heightMultiplier, y);
                 meshData.UVs[vertexIndex] = new Vector2(x / (float)width, y / (float)height);
 
                 if (x < width - 1 && y < height - 1)
