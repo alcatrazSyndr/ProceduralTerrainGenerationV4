@@ -265,10 +265,15 @@ MonoBehaviour:
   _chunkSize: 240
   _worldScale: 4
   _heightMultiplier: 50
-  _octaves: 1
-  _persistence: 1
+  _octaves: 8
+  _persistence: 0.7
   _lacunarity: 1
+  _falloff: 0
+  _invertFalloff: 0
+  _falloffMainlandSize: 0.9
+  _falloffTransitionWidth: 1
   _worldChunkMaterial: {fileID: 2100000, guid: c5293e1d0a757e045a800c88aa255110, type: 2}
+  _worldChunkGameObjectList: []
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

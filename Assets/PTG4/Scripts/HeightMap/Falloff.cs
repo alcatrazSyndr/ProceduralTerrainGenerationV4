@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Falloff : MonoBehaviour
+public static class Falloff
 {
-    // Start is called before the first frame update
-    void Start()
+    public static float EvaluateWorldFalloffMap(int x, int y, int worldSize, float mainlandSize, float falloffTransitionWidth)
     {
-        
-    }
+        float centerX = worldSize / 2f;
+        float centerY = worldSize / 2f;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        float distanceX = (x - centerX) / (worldSize * mainlandSize / 2f);
+        float distanceY = (y - centerY) / (worldSize * mainlandSize / 2f);
+
+        float distance = Mathf.Sqrt(distanceX * distanceX + distanceY * distanceY);
+
+        float falloffValue = Mathf.Pow(distance, falloffTransitionWidth);
+
+        return Mathf.Clamp01(falloffValue);
     }
 }

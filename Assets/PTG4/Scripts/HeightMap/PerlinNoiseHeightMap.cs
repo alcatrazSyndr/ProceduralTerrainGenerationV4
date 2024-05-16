@@ -11,7 +11,11 @@ public static class PerlinNoiseHeightMap
         float heightMultiplier,
         int octaves,
         float persistence,
-        float lacunarity)
+        float lacunarity,
+        bool falloff,
+        bool invertFalloff,
+        float falloffMainlandSize,
+        float falloffTransitionWidth)
     {
         var totalWorldSize = worldSize * chunkSize;
 
@@ -21,14 +25,32 @@ public static class PerlinNoiseHeightMap
         {
             for (int x = 0; x < totalWorldSize; x++)
             {
-                var xSamplePosition = ((float)x / (float)totalWorldSize) * worldScale;
-                var ySamplePosition = ((float)y / (float)totalWorldSize) * worldScale;
+                var amplitude = 1f;
+                var frequency = 1f;
 
-                var perlinValue = Mathf.PerlinNoise(xSamplePosition, ySamplePosition);
+                var noiseHeight = 0f;
 
-                var noiseHeight = perlinValue * heightMultiplier;
+                for (int i = 0; i < octaves; i++)
+                {
+                    var xSamplePosition = ((float)x / (float)totalWorldSize) * worldScale * frequency;
+                    var ySamplePosition = ((float)y / (float)totalWorldSize) * worldScale * frequency;
 
-                heightMap[x, y] = noiseHeight;
+                    var perlinValue = Mathf.PerlinNoise(xSamplePosition, ySamplePosition);
+
+                    noiseHeight += (perlinValue * amplitude);
+
+                    amplitude *= persistence;
+                    frequency *= lacunarity;
+                }
+
+                if (falloff)
+                {
+                    var falloffValue = Falloff.EvaluateWorldFalloffMap(x, y, totalWorldSize, falloffMainlandSize, falloffTransitionWidth);
+
+                    noiseHeight += invertFalloff ? falloffValue : -falloffValue;
+                }
+
+                heightMap[x, y] = (noiseHeight * heightMultiplier);
             }
         }
 
