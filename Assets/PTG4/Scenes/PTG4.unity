@@ -261,10 +261,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8febfb6e97c56e468d90f4f964c07d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _worldSize: 6
+  _worldSize: 8
   _chunkSize: 240
-  _worldScale: 4
-  _heightMultiplier: 130
+  _worldScale: 6
+  _heightMultiplier: 150
   _octaves: 3
   _persistence: 0.2
   _lacunarity: 4
@@ -301,14 +301,77 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _falloff: 0
+  _falloff: 1
   _invertFalloff: 0
-  _falloffMainlandSize: 0.9
-  _falloffTransitionWidth: 15
+  _falloffMainlandSize: 0.95
+  _falloffTransitionWidth: 25
   _hydraulicErosion: 1
-  _hydraulicErosionIterations: 1440000
+  _hydraulicErosionIterations: 3000000
   _worldChunkMaterial: {fileID: 2100000, guid: c5293e1d0a757e045a800c88aa255110, type: 2}
   _worldChunkGameObjectList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
 --- !u!1 &963194225
 GameObject:

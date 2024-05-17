@@ -48,7 +48,7 @@ public static class PerlinNoiseHeightMap
                 {
                     var falloffValue = Falloff.EvaluateWorldFalloffMap(x, y, totalWorldSize, falloffMainlandSize, falloffTransitionWidth);
 
-                    noiseHeight -= falloffValue;
+                    noiseHeight += (invertFalloff ? falloffValue : -falloffValue);
                 }
 
                 heightMap[x, y] = Mathf.Clamp01(heightMapCurve.Evaluate(noiseHeight));
